@@ -109,8 +109,10 @@ def visualize_flood_fill(levelDict, title, G, pos):
             node_red.extend(value)
             plt.clf()
             plt.title(title)
+            
             nx.draw(G, pos, with_labels=True, node_color=['r' if n in node_red else 'g' for n in G.nodes])
             plt.draw()
+            plt.text(-0.7, 0.6,s='Initial Target: Hospital\nDepth: 2', bbox=dict(facecolor='green', alpha=0.5), horizontalalignment='center')
             manager = plt.get_current_fig_manager()
             if i == 1:
                 manager.full_screen_toggle()
@@ -153,8 +155,8 @@ G.add_edges_from(
 )
 pos = nx.spring_layout(G)
 
-start_node = 'Airport'
+start_node = 'Hospital'
 x = floodFill(G, start_node)
 print(x)
 
-visualize_flood_fill(floodFill(G, start_node), 'Flood Fill Visualization', G, pos)
+visualize_flood_fill(floodFill(G, start_node), 'CCAAS Visualization', G, pos)
